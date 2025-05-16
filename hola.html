@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis 15 Años</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      color: #fff;
+      background: url('abi15.jpg') center center no-repeat fixed;
+      background-size: cover;
+      animation: zoomEffect 10s ease-in-out infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes zoomEffect {
+      0% { background-size: 110%; }
+      100% { background-size: 100%; }
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 95vw;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 9vw;
+      color: #fff;
+    }
+
+    p {
+      font-size: 4vw;
+      color: #fff;
+    }
+
+    .info {
+      font-size: 4vw;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    button {
+      width: 90%;
+      max-width: 300px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border: none;
+      color: #d8006e;
+      padding: 12px;
+      font-size: 4vw;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #fff;
+      color: #c30063;
+    }
+
+    button i {
+      margin-right: 8px;
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 48px; }
+      p, .info { font-size: 18px; }
+      button { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mis 15 Años</h1>
+    <p>¡Estás invitado a celebrar conmigo!</p>
+
+    <p class="info">
+      📅 <strong>Fecha:</strong> 20 de julio, 6:00 PM<br>
+      📍 <strong>Lugar:</strong> Salón Los Sueños, Av. Fiesta 123
+    </p>
+
+    <button onclick="window.open('https://goo.gl/maps/xxxxxxxxxx', '_blank')">
+      <i class="fas fa-map-marker-alt"></i> Ver en Google Maps
+    </button>
+
+    <button onclick="window.open('https://wa.me/1234567890?text=Confirmo%20mi%20asistencia%20a%20tus%2015%20años!', '_blank')">
+      <i class="fab fa-whatsapp"></i> Confirmar asistencia
+    </button>
+
+    <button onclick="alert('🎉 ¡Faltan 30 días para la fiesta!')">
+      <i class="fas fa-hourglass-half"></i> Cuenta regresiva
+    </button>
+
+    <button onclick="toggleMusic()" id="musicBtn">
+      <i class="fas fa-music"></i> Música
+    </button>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/11/audio_c66894ef3e.mp3?filename=quiet-time-145316.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      music.volume = 0.7;
+      music.play().then(() => {
+        isPlaying = true;
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar música';
+      }).catch(() => {
+        console.log('⚠️ El navegador bloqueó la reproducción automática.');
+      });
+    });
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        musicBtn.innerHTML = '<i class="fas fa-music"></i> Música';
+      } else {
+        music.play();
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar música';
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>
